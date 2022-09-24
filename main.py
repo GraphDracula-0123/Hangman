@@ -1,6 +1,10 @@
 
-print("\n\n\n\n\nHello to HANGMAN.")
-word = input("Please enter the word: ").lower()
+from getpass import getpass
+
+
+
+print("\n\n\n\n\nHello to HANGMAN.", "blue")
+word = getpass("Please enter the word to be guessed: ").lower()
 print("Okay let's start the game!\n\n\n\n")
 
 counter = 0
@@ -17,14 +21,15 @@ print("")
 print(word_lst_hidden)
 
 while True:
-    character = input("Enter your guess: ")
+    character = input("Enter your guess: ").lower()
+
     if character in character_options:
         if character not in word: 
             counter += 1
             print(hangman[counter])
             character_options.remove(character)
             if counter == 6:
-                print("You lost")
+                print("You lose.")
                 break
             print(word_lst_hidden)
             print("\n\n\n")
@@ -36,8 +41,8 @@ while True:
                 word_lst_hidden.insert(character_index[s], character)
             if word_lst == word_lst_hidden:
                 print("\n\n\n")
-                print(word_lst)
-                print("You won!!!")
+                print("You win!!!")
+                print("The word was:", word.capitalize())
                 break
             print(hangman[counter])
             print(word_lst_hidden)
