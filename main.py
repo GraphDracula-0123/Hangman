@@ -19,6 +19,7 @@ word_lst_hidden = ["-" for i in range(len(word))]
 print(hangman[counter])
 print("")
 print(word_lst_hidden)
+print("\n\n\n")
 
 while True:
     character = input(colored("Enter your guess: ", "blue")).lower()
@@ -26,14 +27,19 @@ while True:
     if character in character_options:
         if character not in word: 
             counter += 1
+            print(colored(character, "red"))
             print(hangman[counter])
             character_options.remove(character)
             if counter == 6:
+                print("\n\n\n")
                 print(colored("You lose.", "red"))
+                print("----------------------------")
+                print("\n\n\n")
                 break
             print(word_lst_hidden)
             print("\n\n\n")
         else:
+            print(colored(character, "green"))
             character_options.remove(character)
             character_index =[i for i in range(len(word)) if word[i] == character]
             for s in range(len(character_index)):
@@ -43,6 +49,8 @@ while True:
                 print("\n\n\n")
                 print(colored("You win!!!", "green"))
                 print("The word was:", word.capitalize())
+                print("----------------------------")
+                print("\n\n\n")
                 break
             print(hangman[counter])
             print(word_lst_hidden)
