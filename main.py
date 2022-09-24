@@ -1,10 +1,10 @@
-
+from termcolor import colored
 from getpass import getpass
 
 
 
-print("\n\n\n\n\nHello to HANGMAN.", "blue")
-word = getpass("Please enter the word to be guessed: ").lower()
+print(colored("\n\n\n\n\nHello to HANGMAN.", "blue"))
+word = getpass(colored("Please enter the word to be guessed: ", "blue")).lower()
 print("Okay let's start the game!\n\n\n\n")
 
 counter = 0
@@ -21,7 +21,7 @@ print("")
 print(word_lst_hidden)
 
 while True:
-    character = input("Enter your guess: ").lower()
+    character = input(colored("Enter your guess: ", "blue")).lower()
 
     if character in character_options:
         if character not in word: 
@@ -29,7 +29,7 @@ while True:
             print(hangman[counter])
             character_options.remove(character)
             if counter == 6:
-                print("You lose.")
+                print(colored("You lose.", "red"))
                 break
             print(word_lst_hidden)
             print("\n\n\n")
@@ -41,7 +41,7 @@ while True:
                 word_lst_hidden.insert(character_index[s], character)
             if word_lst == word_lst_hidden:
                 print("\n\n\n")
-                print("You win!!!")
+                print(colored("You win!!!", "green"))
                 print("The word was:", word.capitalize())
                 break
             print(hangman[counter])
