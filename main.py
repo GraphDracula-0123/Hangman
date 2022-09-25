@@ -1,10 +1,23 @@
 from termcolor import colored
 from getpass import getpass
-
-
+import requests
+import random
 
 print(colored("\n\n\n\n\nHello to HANGMAN.", "blue"))
-word = getpass(colored("Please enter the word to be guessed: ", "blue")).lower()
+while True:
+    choice_random = input(colored("Do you want a random word? Type 'y' for yes or 'n' for no: ", "blue"))
+    if choice_random == "y":
+        word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+        response = requests.get(word_site)
+        WORDS = response.content.splitlines()
+        words = [WORDS[i].decode('utf-8') for i in range(len(WORDS))]
+        word = random.choice(words)
+        break
+    elif choice_random == "n":
+        word = getpass(colored("Please enter the word to be guessed: ", "blue")).lower()
+        break
+    else: 
+        print("Please enter a valid answer")
 print("Okay let's start the game!\n\n\n\n")
 
 counter = 0
@@ -33,6 +46,7 @@ while True:
             if counter == 6:
                 print("\n\n\n")
                 print(colored("You lose.", "red"))
+                print("The word was:", word.capitalize())
                 print("----------------------------")
                 print("\n\n\n")
                 break
