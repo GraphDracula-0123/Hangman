@@ -27,11 +27,12 @@ character_options = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 
 word_lst = [i for i in word]
 
-word_lst_hidden = ["-" for i in range(len(word))]
+word_lst_hidden = ["_" for i in range(len(word))]
 
 print(hangman[counter])
 print("")
-print(word_lst_hidden)
+for i in word_lst_hidden:
+    print(i, end="")
 print("\n\n\n")
 
 while True:
@@ -50,7 +51,9 @@ while True:
                 print("----------------------------")
                 print("\n\n\n")
                 break
-            print(word_lst_hidden)
+            print("\n")
+            for i in word_lst_hidden:
+                print(i, end=" ")
             print("\n\n\n")
         else:
             print(colored(character, "green"))
@@ -67,7 +70,9 @@ while True:
                 print("\n\n\n")
                 break
             print(hangman[counter])
-            print(word_lst_hidden)
+            print("\n")
+            for i in word_lst_hidden:
+                print(i, end=" ")
             print("\n\n\n")
     else:
         print("You already had this one. Try another")
