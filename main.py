@@ -1,5 +1,4 @@
-import sys
-from termcolor import colored, cprint
+from termcolor import colored
 from getpass import getpass
 import requests
 import random
@@ -92,8 +91,7 @@ def game():
                     print("\n\n\n")
             else:
                 print("You already had this one. Try another")
+    print(colored("Thanks for playing. See you soon", "cyan"))
+    print("\n\n\n")
 
 game()
-
-
- 
