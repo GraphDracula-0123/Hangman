@@ -10,10 +10,23 @@ def game():
         while True:
             choice_random = input(colored("Do you want a random word? Type 'y' for yes or 'n' for no: ", "blue"))
             if choice_random == "y":
-                word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+                while True:
+                    choice_language = input(colored("Do you want german or english words? Type 'g' for german and 'e' for english: ", "blue"))
+                    if choice_language == "g":
+                        word_site = "http://www.netzmafia.de/software/wordlists/deutsch.txt"
+                        break
+                    elif choice_language == "e":
+                        word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+                        break
+                    print("Please enter a valid answer.")
                 response = requests.get(word_site)
                 WORDS = response.content.splitlines()
-                words = [WORDS[i].decode('utf-8') for i in range(len(WORDS))]
+                words = []
+                for i in range(len(WORDS)):
+                    try:
+                        words.append(WORDS[i].decode('utf-8'))
+                    except:
+                        continue
                 word = random.choice(words)
                 break
             elif choice_random == "n":
