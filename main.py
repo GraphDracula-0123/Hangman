@@ -3,6 +3,7 @@ from getpass import getpass
 import requests
 import random
 
+
 def game():
     play_again = "y"
     while play_again == "y":
@@ -11,7 +12,7 @@ def game():
             choice_random = input(colored("Do you want a random word? Type 'y' for yes or 'n' for no: ", "blue"))
             if choice_random == "y":
                 while True:
-                    choice_language = input(colored("Do you want german or english words? Type 'g' for german and 'e' for english: ", "blue"))
+                    choice_language = input(colored("Do you want a german or an english word? Type 'g' for german and 'e' for english: ", "blue"))
                     if choice_language == "g":
                         word_site = "http://www.netzmafia.de/software/wordlists/deutsch.txt"
                         break
